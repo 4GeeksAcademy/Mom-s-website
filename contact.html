@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | FlowFreight</title>
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo-block">
+        <p class="logo-title">Compliance, Bookkeeping &amp; Tax Solutions</p>
+        <p class="logo-subtitle">For Trucking Companies</p>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="start-a-trucking-company.html">Start a Trucking Company</a>
+        <a href="us-operations.html">U.S. Operations</a>
+        <a href="financial-services.html">Financial Services</a>
+        <a href="resources.html">Resources</a>
+        <a class="active" href="contact.html">Contact us</a>
+      </nav>
+      <a class="btn btn-primary" href="contact.html">Request Consultation</a>
+    </header>
+
+    <main>
+      <section class="page-hero"><h1>Tell Us About Your Business</h1></section>
+      <section class="page-content form-grid">
+        <article class="card">
+          <h2>Contact Information</h2>
+          <ul class="contact-details">
+            <li>
+              Phone:
+              <a class="contact-link" href="tel:+17809371373">780-937-1373</a>
+            </li>
+            <li>
+              Email:
+              <a class="contact-link" href="mailto:contact@flowfreight.ca">contact@flowfreight.ca</a>
+            </li>
+            <li>Edmonton, Alberta, Canada</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Request a Consultation</h2>
+          <form
+            class="contact-form"
+            action="https://formsubmit.co/contact@flowfreight.ca"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New Consultation Request - FlowFreight Website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://flowfreight.ca/thank-you.html" />
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" required />
+
+            <label for="company">Company</label>
+            <input id="company" type="text" name="company" required />
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required />
+
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" name="phone" required />
+
+            <label for="concern">Primary Concern</label>
+            <select id="concern" name="concern" required>
+              <option value="">Select one option</option>
+              <option>I Have an Audit</option>
+              <option>I Want to Start a Trucking Company</option>
+              <option>I Need IFTA &amp; IRP Setup</option>
+              <option>I Need Help Managing Compliance Requirements</option>
+              <option>I Am Expanding into the United States</option>
+              <option>I Need Bookkeeping &amp; Tax Services</option>
+              <option>I Need Permits or Registrations</option>
+              <option>I Need Compliance Support</option>
+              <option>Other</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <p class="submit-status" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><p class="footer-title">Compliance, Bookkeeping &amp; Tax Solutions for Trucking Companies</p></div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="start-a-trucking-company.html">Start a Trucking Company</a></li>
+            <li><a href="us-operations.html">U.S. Operations</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Core Services</h3>
+          <ul>
+            <li>Bookkeeping Services</li>
+            <li>Corporate Tax Preparation</li>
+            <li>IFTA Reporting</li>
+            <li>NSC, FMCSA &amp; DOT Compliance</li>
+            <li>Audit Support</li>
+            <li>Fleet Compliance</li>
+            <li>Cross-Border Operations</li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><a href="mailto:contact@flowfreight.ca">contact@flowfreight.ca</a></li>
+            <li><a href="tel:+17809371373">780-937-1373</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const consultationForm = document.querySelector(".contact-form");
+
+      if (consultationForm) {
+        const submitButton = consultationForm.querySelector('button[type="submit"]');
+        const submitStatus = consultationForm.querySelector(".submit-status");
+
+        const updateSubmitState = () => {
+          const formIsValid = consultationForm.checkValidity();
+          submitButton.disabled = !formIsValid;
+
+          if (!formIsValid) {
+            submitStatus.textContent = "Please complete all required fields to continue.";
+          } else {
+            submitStatus.textContent = "";
+          }
+        };
+
+        consultationForm.addEventListener("input", updateSubmitState);
+        consultationForm.addEventListener("change", updateSubmitState);
+
+        consultationForm.addEventListener("submit", () => {
+          submitButton.disabled = true;
+          submitButton.textContent = "Submitting...";
+          submitStatus.textContent = "Sending your consultation request...";
+        });
+
+        updateSubmitState();
+      }
+    </script>
+  </body>
+</html>
